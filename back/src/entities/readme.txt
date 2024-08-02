@@ -1,32 +1,47 @@
-usuarios:
-{
-username
-email
-password
-status
+CategoryBookmark:
+id
+name (unique=true)
+slug (unique=true)
 created_at
 updated_at
-  profile: {
-      nombre y apellido
-      avatar
-      direccion
-      localidad
-      biografia
-  }
-}
 
-categoria_bookmarks:
-nombre
 
-etiquetas_bookmarks:
-nombre
+Tags:
+id
+name (unique=true)
+slug (unique=true)
+created_at
+updated_at
 
-bookmarks:
-categoria_bookmarks
-titulo
+
+Bookmark:
+id
+CategoryBookmark
+User
+title
 link
-descripcion
-etiquetas_bookmarks
+public (boolean, false por defecto)
+description
+created_at
+updated_at
+Tags
+
+tengo estas tres entidades que hay que destacar algo: 
+el Bookmark va a tener un usuario que es el que lo va a crear. un usuario puede crear muchos bookmarks.
+el Bookmark va a tener una categoria y una categoria va a tener muchos bookmarks
+ademas una Bookmark va a tener muchos tags y un tag va a tener muchos bookmarks
+ahora bien estoy con el dilema de que las categorias pertenezcan al usuario logueado... asi éste creara las categorias que necesite tener a pesar que otro usuario tenga esa categoria... 
+lo mismo creo que se deberia hacer con los tags, que opinas ?
+en estos dos casos, no se como se podria manejar la situacion para que no repita las categorias ni los tags
+estas entidades son para un proyecto de typescript, typeorm, express y postrgresql
+podrias incluir las interfaces dentro de la definicion de las entities ?
+
+
+
+
+
+
+
 
 
 

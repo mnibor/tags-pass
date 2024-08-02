@@ -4,8 +4,13 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   JoinColumn,
+  OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { Profile } from './profile.entity';
+import { Category } from './categoryBookmark.entity';
+import { Tag } from './tag.entity';
 
 @Entity()
 export class User {
