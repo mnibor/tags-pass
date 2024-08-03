@@ -9,7 +9,7 @@ import {
   JoinTable,
 } from 'typeorm';
 import { Profile } from './profile.entity';
-import { Category } from './categoryBookmark.entity';
+import { Category } from './category.entity';
 import { Tag } from './tag.entity';
 
 @Entity()
