@@ -24,7 +24,7 @@ export const preloadDataUsers = async () => {
       return console.log('Ya hay datos de usuarios en la base de datos');
 
     for await (const user of preloadUsers) {
-      const newUser = UserModel.create(user);
+      const newUser = UserModel.create({ ...user }); // Use spread operator if needed
       await transactionalEntityManager.save(newUser);
     }
     console.log('Precarga de los datos de usuarios se realizó correctamente');
