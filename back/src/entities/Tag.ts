@@ -7,16 +7,16 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User, IUser } from './User';
-import { Bookmark, IBookmark } from './Bookmark';
+import { User } from './User';
+import { Bookmark } from './Bookmark';
 
 // Interfaz para Tag
 export interface ITag {
   id: number;
   name: string;
   slug: string;
-  user: IUser;
-  bookmarks: IBookmark[];
+  user: User;
+  bookmarks: Bookmark[];
   created_at: Date;
   updated_at: Date;
 }

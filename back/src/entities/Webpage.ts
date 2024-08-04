@@ -6,11 +6,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User, IUser } from './User';
+import { User } from './User';
 
 export interface IWebpage {
   id: number;
-  user: IUser;
+  user: User;
   name: string;
   url: string;
   email: string;

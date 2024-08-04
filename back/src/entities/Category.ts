@@ -7,15 +7,15 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User, IUser } from './User';
-import { Bookmark, IBookmark } from './Bookmark';
+import { User } from './User';
+import { Bookmark } from './Bookmark';
 
 export interface ICategory {
   id: number;
-  user: IUser;
+  user: User;
   name: string;
   slug: string;
-  bookmarks: IBookmark[];
+  bookmarks: Bookmark[];
   created_at: Date;
   updated_at: Date;
 }
@@ -32,7 +32,7 @@ export class Category {
   slug: string;
 
   @ManyToOne(() => User, (user) => user.categories)
-  user: IUser; // Corrección aquí
+  user: User; // Corrección aquí
 
   @OneToMany(() => Bookmark, (bookmark) => bookmark.category)
   bookmarks: Bookmark[];

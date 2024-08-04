@@ -7,13 +7,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Profile, IProfile } from './Profile';
-import { Bookmark, IBookmark } from './Bookmark';
-import { Category, ICategory } from './Category';
-import { Tag, ITag } from './Tag';
-import { Email, IEmail } from './Email';
-import { Webpage, IWebpage } from './Webpage';
-import { Application, IApplication } from './Application';
+import { Profile } from './Profile';
+import { Bookmark } from './Bookmark';
+import { Category } from './Category';
+import { Tag } from './Tag';
+import { Email } from './Email';
+import { Webpage } from './Webpage';
+import { Application } from './Application';
 
 // Interfaz para User
 export interface IUser {
@@ -24,13 +24,13 @@ export interface IUser {
   status: boolean;
   created_at: Date;
   updated_at: Date;
-  profile?: IProfile;
-  bookmarks?: IBookmark[];
-  categories?: ICategory[];
-  tags?: ITag[];
-  emails?: IEmail[];
-  webpages?: IWebpage[];
-  applications?: IApplication[];
+  profile?: Profile;
+  bookmarks?: Bookmark[];
+  categories?: Category[];
+  tags?: Tag[];
+  emails?: Email[];
+  webpages?: Webpage[];
+  applications?: Application[];
 }
 
 @Entity()

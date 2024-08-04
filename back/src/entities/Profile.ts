@@ -5,7 +5,7 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { User, IUser } from './User';
+import { User } from './User';
 
 // Interfaz para Profile
 export interface IProfile {
@@ -14,7 +14,7 @@ export interface IProfile {
   avatar: string;
   location: string;
   biography: string;
-  user: IUser;
+  user: User;
 }
 
 @Entity()

@@ -8,21 +8,21 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User, IUser } from './User';
-import { Category, ICategory } from './Category';
-import { Tag, ITag } from './Tag';
+import { User } from './User';
+import { Category } from './Category';
+import { Tag } from './Tag';
 
 export interface IBookmark {
   id: number;
-  user: IUser;
-  category: ICategory;
+  user: User;
+  category: Category;
   title: string;
   link: string;
   public: boolean;
   description: string;
   created_at: Date;
   updated_at: Date;
-  tags: ITag[];
+  tags: Tag[];
 }
 
 @Entity()
