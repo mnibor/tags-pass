@@ -22,16 +22,16 @@ export class Profile implements IProfile {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true, length: 80 })
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   avatar: string;
 
-  @Column()
+  @Column({ nullable: true, length: 80 })
   location: string;
 
-  @Column()
+  @Column({ nullable: true, length: 250 })
   biography: string;
 
   @OneToOne(() => User, (user) => user.profile)
