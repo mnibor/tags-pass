@@ -1,4 +1,4 @@
-import { AppDataSource, UserModel } from '../config/data-source';
+import { AppDataSource, UserModel, ProfileModel } from '../config/data-source';
 
 const preloadUsers = [
   {
@@ -24,7 +24,18 @@ export const preloadDataUsers = async () => {
       return console.log('Ya hay datos de usuarios en la base de datos');
 
     for await (const user of preloadUsers) {
-      const newUser = UserModel.create({ ...user }); // Use spread operator if needed
+      // Create a new Profile instance
+      const newProfile = ProfileModel.create(user.profile);
+
+      // Save the Profile first
+      await transactionalEntityManager.save(newProfile);
+
+      // Create the User and associate the Profile
+      const newUser = UserModel.create({
+        ...user,
+        profile: newProfile, // Assign the saved Profile instance
+      });
+
       await transactionalEntityManager.save(newUser);
     }
     console.log('Precarga de los datos de usuarios se realizó correctamente');

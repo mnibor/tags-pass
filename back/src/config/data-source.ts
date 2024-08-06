@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
   username: 'postgres',
   password: 'postgres',
   database: 'tags-pass',
-  dropSchema: true,
+  dropSchema: false,
   synchronize: true,
   logging: false,
   entities: [
