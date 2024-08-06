@@ -49,6 +49,7 @@ export class User implements IUser {
   @Column({ unique: true })
   email: string;
 
+  // !! Debería ver el tema de la encriptación de la password
   @Column()
   password: string;
 
