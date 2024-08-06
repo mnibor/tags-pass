@@ -26,16 +26,16 @@ export class Application {
   @ManyToOne(() => User, (user) => user.applications)
   user: User;
 
-  @Column()
+  @Column({ length: 80 })
   name: string;
 
-  @Column()
+  @Column({ length: 80 })
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true, length: 250 })
   comments: string;
 
   @CreateDateColumn()

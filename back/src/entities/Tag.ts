@@ -6,9 +6,11 @@ import {
   ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  BeforeInsert,
 } from 'typeorm';
 import { User } from './User';
 import { Bookmark } from './Bookmark';
+import slug from 'slug';
 
 // Interfaz para Tag
 export interface ITag {
@@ -26,10 +28,10 @@ export class Tag implements ITag {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 80 })
   name: string;
 
-  @Column()
+  @Column({ length: 80 })
   slug: string;
 
   @ManyToOne(() => User, (user) => user.tags)
@@ -43,4 +45,9 @@ export class Tag implements ITag {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @BeforeInsert()
+  generateSlug() {
+    this.slug = slug(this.name);
+  }
 }

@@ -28,19 +28,19 @@ export class Webpage {
   @ManyToOne(() => User, (user) => user.webpages)
   user: User;
 
-  @Column()
+  @Column({ length: 80 })
   name: string;
 
   @Column()
   url: string;
 
-  @Column()
+  @Column({ length: 80 })
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true, length: 250 })
   comments: string;
 
   @CreateDateColumn()

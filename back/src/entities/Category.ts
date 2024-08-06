@@ -6,9 +6,11 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  BeforeInsert,
 } from 'typeorm';
 import { User } from './User';
 import { Bookmark } from './Bookmark';
+import slug from 'slug';
 
 export interface ICategory {
   id: number;
@@ -25,14 +27,14 @@ export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 80 })
   name: string;
 
-  @Column()
+  @Column({ length: 80 })
   slug: string;
 
   @ManyToOne(() => User, (user) => user.categories)
-  user: User; // Corrección aquí
+  user: User;
 
   @OneToMany(() => Bookmark, (bookmark) => bookmark.category)
   bookmarks: Bookmark[];
@@ -42,4 +44,9 @@ export class Category {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @BeforeInsert()
+  generateSlug() {
+    this.slug = slug(this.name);
+  }
 }

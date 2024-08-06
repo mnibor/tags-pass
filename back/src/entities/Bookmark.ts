@@ -31,21 +31,21 @@ export class Bookmark implements IBookmark {
   id: number;
 
   @ManyToOne(() => User, (user) => user.bookmarks)
-  user: User; // Change IUser to User
+  user: User;
 
   @ManyToOne(() => Category, (category) => category.bookmarks)
   category: Category;
 
-  @Column()
+  @Column({ length: 200 })
   title: string;
 
   @Column()
   link: string;
 
-  @Column()
+  @Column({ default: false })
   public: boolean;
 
-  @Column()
+  @Column({ nullable: true, length: 250 })
   description: string;
 
   @CreateDateColumn()
